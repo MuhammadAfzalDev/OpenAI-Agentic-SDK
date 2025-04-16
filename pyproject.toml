@@ -1,0 +1,21 @@
+[project]
+name = "hello-chainlit"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "afzalfaizi", email = "afzaalm993@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "chainlit>=2.4.400",
+    "openai-agents>=0.0.11",
+    "python-dotenv>=1.1.0",
+]
+
+[project.scripts]
+hello-chainlit = "hello_chainlit:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
