@@ -1,0 +1,20 @@
+[project]
+name = "op-ag"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "afzalfaizi", email = "afzaalm993@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "chainlit>=2.4.400",
+    "openai-agents>=0.0.9",
+]
+
+[project.scripts]
+op-ag = "op_ag:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
