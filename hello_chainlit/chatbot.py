@@ -34,7 +34,7 @@ agent1 = Agent(
 
 result = Runner.run_sync(
     agent1,
-    input="what is the capital of Pakistan",
+    input="what is the capital of India?",
     run_config=config,
     
 )
