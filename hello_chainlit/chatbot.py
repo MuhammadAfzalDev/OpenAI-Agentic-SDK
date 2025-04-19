@@ -32,16 +32,23 @@ agent1 = Agent(
     name="Faizi RAG Based Agent"
 )
 
-result = Runner.run_sync(
-    agent1,
-    input="what is the capital of India?",
-    run_config=config,
+
+@cl.on_chat_start
+async def handle_chat_start():
+    cl.user_session.set("history", [])
+    await cl.Message(content="Hello! I am your assistant. How can I help you today?").send()
+    
+    
+@cl.on_message
+async def handle_message(message: cl.Message):
+    history = cl.user_session.get("history")
+    history.append({"role: user, content: ": message.content})
+    result = await Runner.run(
+        agent1,
+        input=history,
+        run_config=config,
     
 )
-
-print(result.final_output)
-
-# @cl.on_message
-# async def handle_message(message: cl.Message):
-   
-#     await cl.Message(content=f"Hello: {message.content}" ).send()
+    history.append({"role: assistant, content: ": result.final_output})
+    cl.user_session.set("history", history)
+    await cl.Message(content=result.final_output).send()
